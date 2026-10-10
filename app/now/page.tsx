@@ -30,9 +30,11 @@ export default function NowPage() {
               </h2>
               <div className="max-w-[38rem]">
                 <p>{item.text}</p>
-                <TextLink href={item.href} className="mt-4 inline-block">
-                  Open the record
-                </TextLink>
+                {"href" in item && item.href ? (
+                  <TextLink href={item.href} className="mt-4 inline-block">
+                    Open the record
+                  </TextLink>
+                ) : null}
               </div>
             </li>
           ))}

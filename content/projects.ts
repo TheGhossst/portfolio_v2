@@ -3,7 +3,7 @@
  * Replace the fields in this file when a real record exists.
  */
 
-export type ProjectCategory = "research" | "systems" | "experiments" | "tools";
+export type ProjectCategory = "research" | "systems" | "experiments" | "tools" | "apps";
 
 export type ProjectStatus = "in-progress" | "completed" | "paused" | "archived";
 
@@ -31,6 +31,7 @@ export type Project = {
   approach: string[];
   decision: string;
   figureCaption: string;
+  recordNote?: string;
   challenges: string;
   learned: string;
   future: string;
@@ -44,17 +45,224 @@ const unrecorded = {
   original: "Not yet recorded. No experimental measurements are stored in this archive.",
 } as const;
 
+const builtRecord = "Built system · Filed without a separate study";
+
 export const projects: Project[] = [
   {
-    slug: "uav-digital-twin",
+    slug: "e-voting",
     number: "01",
+    title: "E-Voting",
+    categoryLabel: "Blockchain",
+    categories: ["systems"],
+    summary: "An election system that writes each cast ballot to a blockchain, so the tally is not kept on one server.",
+    status: "completed",
+    featured: true,
+    dateLabel: "10 Oct 2026",
+    question: "How can a vote be cast and checked later, with the record held by more than one party?",
+    context:
+      "A blockchain system for an election. A voter casts a ballot, the ballot is written to a shared ledger, and the count is read back from that record.",
+    motivation:
+      "A voting server can be altered, or simply disappear. The property worth keeping is a ballot that more than one party can see after it is cast.",
+    approach: [
+      "Separate the person who votes from the ballot that is stored, so reading the ledger is a different act from learning who voted.",
+      "Write the cast ballot to a blockchain, and keep that copy as the one the tally uses.",
+      "Count from the ledger. A result that cannot be read back from it is unfinished.",
+    ],
+    decision: "The record of the vote is the system. The screen is only how a person casts it.",
+    figureCaption:
+      "Figure 1. A voter, the ballot they cast, and the ledger that holds it. A schematic of the record — not a deployment diagram.",
+    recordNote: builtRecord,
+    challenges:
+      "A ledger people can audit and a ballot that stays private pull in opposite directions. Storing the vote carelessly can reveal the voter. This page does not include a formal privacy proof.",
+    learned: "The difficult part is what the ledger is allowed to show, once the transaction that writes the ballot already exists.",
+    future: "A receipt a voter can check, and a tally the public can read, kept as two different views of the same record.",
+    evidence: [
+      { kind: "published", label: "Published claims", note: "No paper is filed with this record." },
+      {
+        kind: "reproduced",
+        label: "Reproduced results",
+        note: "This is an original system, built for the election problem, rather than a reimplementation of a published result.",
+      },
+      {
+        kind: "original",
+        label: "Original results",
+        note: "The voting flow was built: cast a ballot, write it to the chain, and count from that record. No separate measurement study is stored here.",
+      },
+      {
+        kind: "future",
+        label: "Future ideas",
+        note: "Split the voter’s receipt from the public tally, so checking your own vote does not expose anyone else’s.",
+      },
+    ],
+    links: [],
+  },
+  {
+    slug: "patient-consent",
+    number: "02",
+    title: "Patient Consent",
+    categoryLabel: "Blockchain",
+    categories: ["systems"],
+    summary: "A consent record on a blockchain, so a patient’s permission can be granted, read, and withdrawn.",
+    status: "completed",
+    featured: true,
+    dateLabel: "10 Oct 2026",
+    question: "Where should a patient’s permission live, when more than one system needs to see that it was given?",
+    context:
+      "A consent system for care. The patient grants or withdraws permission, and that act is stored where it can be checked later.",
+    motivation:
+      "Consent that exists only inside one organisation’s database is difficult to show to anyone else, and difficult to take back in a way the other party can see.",
+    approach: [
+      "Treat consent as its own record: who it concerns, what it allows, and whether it is still in force.",
+      "Write grants and withdrawals to a blockchain, in order, so a later reader can see which one came last.",
+      "Keep the clinical chart off the ledger. The chain stores the permission, and the care system stores the medicine.",
+    ],
+    decision: "The chain holds the permission. It does not hold the medical record.",
+    figureCaption:
+      "Figure 1. A patient, the consent they give or withdraw, and the record that keeps those acts in order. Schematic, not a hospital deployment.",
+    recordNote: builtRecord,
+    challenges:
+      "A consent record can outlive the reason it was given. Withdrawal has to be as visible as the original grant. This page does not claim a clinical deployment or a regulatory approval.",
+    learned: "Consent is a sequence. The last entry is the one a reader has to trust.",
+    future: "A view for the patient of the permissions still in force, without asking them to read the whole ledger.",
+    evidence: [
+      { kind: "published", label: "Published claims", note: "No paper is filed with this record." },
+      {
+        kind: "reproduced",
+        label: "Reproduced results",
+        note: "This is an original consent system, rather than a reimplementation of a published protocol.",
+      },
+      {
+        kind: "original",
+        label: "Original results",
+        note: "Grant and withdrawal were built as ordered records on a blockchain. No clinical trial is stored here.",
+      },
+      {
+        kind: "future",
+        label: "Future ideas",
+        note: "Show the patient the current state of each permission, derived from the latest entry.",
+      },
+    ],
+    links: [],
+  },
+  {
+    slug: "episode-alerts",
+    number: "03",
+    title: "Episode Alerts",
+    categoryLabel: "Mobile",
+    categories: ["apps"],
+    summary: "A mobile app for following television shows and hearing when a new episode is out.",
+    status: "completed",
+    featured: true,
+    dateLabel: "16 Apr 2026",
+    question: "How does a person keep a list of shows without opening each one to see whether something new has aired?",
+    context:
+      "A mobile application. The person follows shows, and the app is responsible for saying when the next episode is available.",
+    motivation:
+      "Shows sit on different services. The missing piece is one list, and a notice when that list changes.",
+    approach: [
+      "Keep the shows a person follows, and the episode they are waiting on.",
+      "Watch the schedule, so the person does not have to open every title.",
+      "Send the alert when a new episode is out, and leave the rest of the app quiet.",
+    ],
+    decision: "The product is the alert. A catalogue to browse is the supporting screen.",
+    figureCaption:
+      "Figure 1. A show, the schedule it belongs to, and the alert when the next episode is out. Schematic of the app, not a store listing.",
+    recordNote: builtRecord,
+    challenges:
+      "Air dates move, and an alert for the wrong night is worse than a late one. This record does not include a user count or a store rating.",
+    learned: "The useful screen is the next episode. The whole catalogue can wait behind it.",
+    future: "A clearer place for shows that are between seasons, so the list stays about what is actually next.",
+    evidence: [
+      { kind: "published", label: "Published claims", note: "No paper is filed with this record." },
+      {
+        kind: "reproduced",
+        label: "Reproduced results",
+        note: "The app was built to track shows the person follows. It is a product, not a reproduced experiment.",
+      },
+      {
+        kind: "original",
+        label: "Original results",
+        note: "Follow a show, keep the next episode, and raise an alert when it is out. No usage study is stored here.",
+      },
+      {
+        kind: "future",
+        label: "Future ideas",
+        note: "Hold between-season shows apart from the ones with an episode actually coming.",
+      },
+    ],
+    links: [
+      {
+        label: "Repository",
+        href: "https://github.com/TheGhossst/EpisodeAlerts-MobileApp",
+        external: true,
+      },
+    ],
+  },
+  {
+    slug: "efhub",
+    number: "04",
+    title: "eFHUB",
+    categoryLabel: "Mobile",
+    categories: ["apps"],
+    summary:
+      "A mobile companion for eFootball: player and manager databases, a squad builder, and a way to read tactics.",
+    status: "completed",
+    featured: true,
+    dateLabel: "10 Oct 2026",
+    question: "What does a player need beside the game, when building a squad means comparing stats, managers, and cost?",
+    context:
+      "eFHUB is a companion app for eFootball on iOS and Android. It is a planning tool — player cards, managers, squads, and tactics — and it is not part of the game itself.",
+    motivation:
+      "The game shows a player as they are when you have them. Planning a squad needs the stats at max level, the manager’s shape, and what the squad costs to keep.",
+    approach: [
+      "Search a player database on max-level stats, and show the main strengths on the card.",
+      "Keep a manager database for formation and tactics, including managers who change shape through a season.",
+      "Build a squad that totals team strength and contract cost, and that can be assembled from the limits you set.",
+    ],
+    decision: "The app is for the decision before the match: who is in the squad, under which manager, at what cost.",
+    figureCaption:
+      "Figure 1. A player, the squad they join, and the plan that tests the shape. Schematic of the companion, not an in-game screen.",
+    recordNote: builtRecord,
+    challenges:
+      "The data has to follow a game that changes every season. eFHUB is an unofficial companion and is not affiliated with the game’s publisher. This page does not file download counts or ratings.",
+    learned: "A companion earns its place when it answers the question the match screen is poor at: what this player becomes, and what the squad costs.",
+    future: "Keep the season’s data current, including evolutions, without turning the planner into another copy of the game.",
+    evidence: [
+      { kind: "published", label: "Published claims", note: "No paper is filed with this record." },
+      {
+        kind: "reproduced",
+        label: "Reproduced results",
+        note: "The app is a product for planning squads. It is not a reproduced experiment.",
+      },
+      {
+        kind: "original",
+        label: "Original results",
+        note: "Players, managers, a squad builder, a game plan, hidden-gem search, and skill tutorials are part of the app. No usage study is stored here.",
+      },
+      {
+        kind: "future",
+        label: "Future ideas",
+        note: "Carry evolutions and the new season’s cards in the same planner.",
+      },
+    ],
+    links: [
+      {
+        label: "eFHUB app",
+        href: "https://efhub.com/app",
+        external: true,
+      },
+    ],
+  },
+  {
+    slug: "uav-digital-twin",
+    number: "05",
     title: "UAV Digital Twin",
     categoryLabel: "Optimization / Research",
     categories: ["research", "systems"],
     summary:
       "Exploring resource allocation, wireless communication, and optimization under network constraints.",
     status: "in-progress",
-    featured: true,
+    featured: false,
     dateLabel: "02 Oct 2026",
     question:
       "How should resources be allocated across a UAV network when the wireless links are part of the problem, not a detail beside it?",
@@ -91,14 +299,14 @@ export const projects: Project[] = [
   },
   {
     slug: "ecg-jepa",
-    number: "02",
+    number: "06",
     title: "ECG JEPA",
     categoryLabel: "Machine Learning",
     categories: ["research", "experiments"],
     summary:
       "Investigating whether a joint-embedding predictor can keep the structure of a heartbeat when part of the ECG is withheld.",
     status: "in-progress",
-    featured: true,
+    featured: false,
     dateLabel: "28 Sep 2026",
     question:
       "What should a mask hide on an electrocardiogram, if the model is meant to keep the heartbeat rather than redraw the trace?",
@@ -135,14 +343,14 @@ export const projects: Project[] = [
   },
   {
     slug: "tools-worth-building",
-    number: "03",
+    number: "07",
     title: "Tools Worth Building",
     categoryLabel: "Software Engineering",
     categories: ["tools"],
     summary:
       "Practical software, backend systems, and experiments that start with a problem worth solving.",
     status: "paused",
-    featured: true,
+    featured: false,
     dateLabel: "02 Sep 2026",
     question:
       "Which problems are worth a piece of software, and which only feel urgent because a tool would be satisfying to build?",

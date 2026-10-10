@@ -9,10 +9,10 @@ export const site = {
   wordmarkRest: "personal archive",
   title: "The Personal Archive",
   description:
-    "A personal archive of investigations in systems, machine learning, and software.",
-  statusLabel: "Exploring research",
+    "An MTech student’s archive of blockchain systems, applications, and backend work in Go.",
+  statusLabel: "Learning Go",
   statusHref: "/now",
-  currentlyExploring: "Currently exploring — research, systems & software",
+  currentlyExploring: "MTech — learning Go and backend",
   lastUpdated: "10 Oct 2026",
   year: "2026",
   identityNote: "Placeholder identity",
@@ -66,7 +66,7 @@ export const homeCopy = {
   headlineRest: "how things work.",
   supporting: "And occasionally, building something to find out.",
   introduction:
-    "I’m a software engineering student interested in systems, machine learning, and the ideas that sit between theory and something real.",
+    "I’m an MTech student learning Go and backend systems. I’ve worked in blockchain, application development, full-stack software, and machine learning.",
   workLink: "Explore my work",
   aboutLink: "A little about me",
   noteLabel: "A small thought, left here.",
@@ -80,14 +80,16 @@ export const homeCopy = {
 export const aboutCopy = {
   title: "A little about me",
   paragraphs: [
-    "I’m a software engineering student interested in systems, machine learning, and the ideas that sit between theory and something real.",
-    "This site is a personal archive of that work: projects still being figured out, notes from the middle of a problem, and the occasional record of a decision. It is not a résumé in disguise.",
+    "I’m an MTech student learning Go and backend systems. I’ve worked in blockchain, application development, full-stack software, and machine learning.",
+    "This site is a personal archive of that work: the systems, the applications, and what I’m learning now. It is not a résumé in disguise.",
   ],
   interestsLabel: "Interests",
   interests: [
-    "Systems",
+    "Go and backend systems",
+    "Blockchain",
+    "App development",
+    "Full-stack software",
     "Machine learning",
-    "The space between a theory and something that runs",
   ],
 } as const;
 
@@ -97,19 +99,18 @@ export const nowCopy = {
   updated: "10 Oct 2026",
   items: [
     {
-      label: "Research",
-      text: "Resource allocation and wireless constraints, through a UAV digital twin. No measurements are filed yet.",
-      href: "/work/uav-digital-twin",
+      label: "Go",
+      text: "Learning Go, and the backend work an application has to call.",
     },
     {
-      label: "Machine learning",
-      text: "ECG JEPA — what a mask on one heartbeat asks a representation to keep. No training run is filed.",
-      href: "/work/ecg-jepa",
+      label: "Blockchain",
+      text: "E-voting and patient consent, filed as records someone else can check after the fact.",
+      href: "/work/e-voting",
     },
     {
-      label: "Software",
-      text: "Which tools are worth building, paused until a problem can be stated without a stack attached.",
-      href: "/work/tools-worth-building",
+      label: "Applications",
+      text: "Episode Alerts, for the next episode of a show, and eFHUB, for planning an eFootball squad.",
+      href: "/work/episode-alerts",
     },
   ],
 } as const;
@@ -117,7 +118,7 @@ export const nowCopy = {
 export const workCopy = {
   label: "Archive",
   title: "Work",
-  lede: "Investigations filed while they are still open. The descriptions are placeholders, not claims about finished systems.",
+  lede: "Blockchain systems, mobile applications, and full-stack software. Go and backend work is what this archive is learning now.",
 } as const;
 
 export const notesCopy = {
@@ -130,4 +131,12 @@ export const cvCopy = {
   label: "CV",
   title: "Résumé",
   lede: "A résumé file is not published yet. This page is here so the contact link has somewhere to go.",
+} as const;
+
+/** The only lines on the site that are allowed to have a little personality. */
+export const asides = {
+  missing: "Well, this wasn’t where I expected to end up either.",
+  searchMiss: "I checked the margins, too.",
+  copied: "Copied. Try not to lose it in there.",
+  copyFailed: "The clipboard wouldn’t take it.",
 } as const;

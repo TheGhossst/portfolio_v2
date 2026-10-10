@@ -4,10 +4,11 @@ import { contactLinks, homepageSections, navLinks, nowCopy } from "@/content/sit
 
 export const categoryFilters = [
   { id: "all", label: "All" },
-  { id: "research", label: "Research" },
   { id: "systems", label: "Systems" },
-  { id: "experiments", label: "Experiments" },
+  { id: "apps", label: "Apps" },
   { id: "tools", label: "Tools" },
+  { id: "research", label: "Research" },
+  { id: "experiments", label: "Experiments" },
 ] as const;
 
 export const statusFilters = [

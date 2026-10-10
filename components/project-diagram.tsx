@@ -9,6 +9,10 @@ const paper = "var(--paper)";
 export function ProjectDiagram({ slug, className = "h-auto w-full" }: { slug: string; className?: string }) {
   if (slug === "uav-digital-twin") return <UavDiagram className={className} />;
   if (slug === "ecg-jepa") return <EcgDiagram className={className} />;
+  if (slug === "e-voting") return <StackDiagram className={className} rows={["Voter", "Ballot", "Ledger"]} />;
+  if (slug === "patient-consent") return <StackDiagram className={className} rows={["Patient", "Consent", "Record"]} />;
+  if (slug === "episode-alerts") return <StackDiagram className={className} rows={["Show", "Schedule", "Alert"]} />;
+  if (slug === "efhub") return <StackDiagram className={className} rows={["Player", "Squad", "Plan"]} />;
   return <ToolsDiagram className={className} />;
 }
 
@@ -195,11 +199,15 @@ function EcgDiagram({ className }: { className: string }) {
 }
 
 function ToolsDiagram({ className }: { className: string }) {
-  const rows = [
-    { label: "Problem", y: 8, index: "01" },
-    { label: "Interface", y: 68, index: "02" },
-    { label: "System", y: 128, index: "03" },
-  ];
+  return <StackDiagram className={className} rows={["Problem", "Interface", "System"]} />;
+}
+
+function StackDiagram({ className, rows: labels }: { className: string; rows: string[] }) {
+  const rows = labels.map((label, index) => ({
+    label,
+    y: 8 + index * 60,
+    index: String(index + 1).padStart(2, "0"),
+  }));
 
   return (
     <Diagram className={className}>
