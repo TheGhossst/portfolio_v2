@@ -1,3 +1,4 @@
+import { CopyLink } from "@/components/copy-link";
 import { SearchTrigger } from "@/components/command-palette";
 import { Frame } from "@/components/frame";
 import { site } from "@/content/site";
@@ -14,6 +15,7 @@ export function SiteFooter() {
         </div>
         <div className="flex flex-col gap-2 font-mono text-[0.72rem] text-ink-soft md:items-end">
           <p>Last updated {site.lastUpdated}</p>
+          <CopyLink />
           <SearchTrigger className="w-fit uppercase tracking-[0.12em] underline decoration-sage underline-offset-[3px]">
             Search
           </SearchTrigger>
