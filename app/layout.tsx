@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Mono, Newsreader, Source_Sans_3 } from "next/font/google";
 import { CommandPalette } from "@/components/command-palette";
 import { InlineScript } from "@/components/inline-script";
+import { SiteCursor } from "@/components/site-cursor";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { site } from "@/content/site";
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <SiteFooter />
         <CommandPalette />
+        <SiteCursor />
       </body>
     </html>
   );
