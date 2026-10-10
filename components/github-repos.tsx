@@ -1,5 +1,38 @@
+import { RepoList } from "@/components/repo-list";
 import { TextLink } from "@/components/text-link";
 import { getPublicRepos } from "@/lib/github";
+
+const loadingRows = [
+  { title: "w-40", body: "w-[min(100%,18rem)]", meta: "w-36" },
+  { title: "w-56", body: "w-[min(100%,14rem)]", meta: "w-32" },
+  { title: "w-44", body: "w-[min(100%,16rem)]", meta: "w-40" },
+];
+
+export function GitHubReposFallback() {
+  return (
+    <div aria-busy="true">
+      <p className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-ink-soft">Reading GitHub…</p>
+      <div className="mt-6 border-t border-rule" aria-hidden="true">
+        {loadingRows.map((row, index) => (
+          <div key={row.title} className="border-b border-rule py-4">
+            <span
+              className={`block h-5 max-w-full bg-sage-light motion-safe:animate-pulse ${row.title}`}
+              style={{ animationDelay: `${index * 180}ms` }}
+            />
+            <span
+              className={`mt-3 block h-4 max-w-full bg-sage-light motion-safe:animate-pulse ${row.body}`}
+              style={{ animationDelay: `${index * 180}ms` }}
+            />
+            <span
+              className={`mt-3 block h-3 max-w-full bg-sage-light motion-safe:animate-pulse ${row.meta}`}
+              style={{ animationDelay: `${index * 180}ms` }}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export async function GitHubRepos() {
   const result = await getPublicRepos();
@@ -24,22 +57,7 @@ export async function GitHubRepos() {
         ) : null}
         , with the most recently updated first.
       </p>
-      <ul className="mt-6 border-t border-rule">
-        {result.repos.map((repo) => (
-          <li key={repo.id} className="border-b border-rule py-4">
-            <TextLink href={repo.url} className="font-serif text-[1.35rem] leading-snug">
-              {repo.name}
-            </TextLink>
-            {repo.description ? <p className="mt-2 max-w-[38rem] text-pretty">{repo.description}</p> : null}
-            <p className="mt-2 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-ink-soft">
-              {repo.language ?? "No language listed"}
-              {" · "}
-              Updated {repo.updatedLabel}
-              {repo.stars > 0 ? ` · ${repo.stars} ${repo.stars === 1 ? "star" : "stars"}` : ""}
-            </p>
-          </li>
-        ))}
-      </ul>
+      <RepoList repos={result.repos} />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { Suspense, type ReactNode } from "react";
-import { GitHubRepos } from "@/components/github-repos";
+import { GitHubRepos, GitHubReposFallback } from "@/components/github-repos";
 import { ProjectDiagram } from "@/components/project-diagram";
 import { StatusMark } from "@/components/status-mark";
 import { TextLink } from "@/components/text-link";
@@ -38,20 +38,14 @@ export function CaseStudy({ project }: { project: Project }) {
               </span>
             </div>
             <p className="mt-4 font-mono text-[0.72rem] uppercase tracking-[0.12em] text-ink-soft">
-              Placeholder record · No measurements filed
+              {project.recordNote ?? "Placeholder record · No measurements filed"}
             </p>
           </div>
         </header>
 
         {project.slug === "tools-worth-building" ? (
           <StudyBlock id="repositories" label="Repositories">
-            <Suspense
-              fallback={
-                <p className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-ink-soft">
-                  Reading GitHub…
-                </p>
-              }
-            >
+            <Suspense fallback={<GitHubReposFallback />}>
               <GitHubRepos />
             </Suspense>
           </StudyBlock>
