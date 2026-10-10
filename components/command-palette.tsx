@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { asides } from "@/content/site";
 import { filterPalette, paletteItems, type PaletteItem } from "@/lib/archive";
 
 const PALETTE_EVENT = "archive:open-palette";
@@ -195,7 +196,10 @@ export function CommandPalette() {
         </form>
         <div id={listId} role="listbox" aria-label="Search results" className="palette-results">
           {filtered.length === 0 ? (
-            <p className="px-5 py-8 text-ink-soft">Nothing filed under that name.</p>
+            <div className="px-5 py-8">
+              <p className="text-ink-soft">Nothing filed under that name.</p>
+              <p className="mt-2 font-serif text-[1.2rem] italic leading-snug text-ink">{asides.searchMiss}</p>
+            </div>
           ) : (
             GROUPS.map((group) => {
               const groupItems = filtered.filter((item) => item.group === group);

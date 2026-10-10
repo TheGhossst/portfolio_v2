@@ -1,5 +1,6 @@
 import { Frame } from "@/components/frame";
 import { TextLink } from "@/components/text-link";
+import { asides } from "@/content/site";
 
 export default function NotFound() {
   return (
@@ -10,6 +11,7 @@ export default function NotFound() {
           <h1 className="font-serif text-[2.25rem] font-medium leading-[1.15] tracking-[-0.02em]">
             This page is not in the archive.
           </h1>
+          <p className="mt-5 max-w-[28rem] font-serif text-[1.35rem] italic leading-snug">{asides.missing}</p>
           <TextLink href="/" className="mt-6 inline-block">
             Return home
           </TextLink>
