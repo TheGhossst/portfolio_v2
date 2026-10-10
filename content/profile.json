@@ -1,0 +1,63 @@
+{
+  "name": "Riley",
+  "role": "MTech student",
+  "location": "",
+  "currently": "Learning Go and backend systems",
+  "summary": [
+    "I’m an MTech student learning Go and backend systems. I’ve worked in blockchain, application development, full-stack software, and machine learning.",
+    "The archive next to this page keeps the projects. This page is the longer note about the person filing them."
+  ],
+  "education": [
+    {
+      "school": "",
+      "credential": "MTech",
+      "field": "",
+      "period": "",
+      "detail": "Currently a student, learning Go and the backend work an application has to call."
+    }
+  ],
+  "experience": [
+    {
+      "role": "Blockchain",
+      "organization": "",
+      "period": "",
+      "summary": "Systems where a record has to be checkable after the fact.",
+      "points": [
+        "E-voting — a cast ballot written to a blockchain and counted from that ledger.",
+        "Patient consent — permission granted and withdrawn, kept apart from the medical chart."
+      ]
+    },
+    {
+      "role": "Application development",
+      "organization": "",
+      "period": "",
+      "summary": "Mobile products with one job each.",
+      "points": [
+        "Episode Alerts — follow television shows and hear when a new episode is out.",
+        "eFHUB — an eFootball companion for players, managers, squads, and tactics."
+      ]
+    },
+    {
+      "role": "Full-stack software",
+      "organization": "",
+      "period": "",
+      "summary": "Applications that need both the screen a person uses and the system behind it.",
+      "points": []
+    },
+    {
+      "role": "Machine learning",
+      "organization": "",
+      "period": "",
+      "summary": "Part of the work, kept with the systems and applications.",
+      "points": []
+    }
+  ],
+  "focusLabel": "Focus",
+  "focus": [
+    "Go and backend systems",
+    "Blockchain",
+    "App development",
+    "Full-stack software",
+    "Machine learning"
+  ]
+}

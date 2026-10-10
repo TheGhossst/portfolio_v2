@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { SearchTrigger } from "@/components/command-palette";
 import { Frame } from "@/components/frame";
 import { ThemeToggle } from "@/components/theme-toggle";
+import profile from "@/content/profile.json";
 import { navLinks, site } from "@/content/site";
 
 function isActive(pathname: string, href: string) {
@@ -52,8 +53,8 @@ export function SiteHeader() {
       <Frame>
         <div className="flex items-center justify-between gap-4 border-b border-rule py-4">
           <div className="flex min-w-0 items-baseline gap-5">
-            <Link href="/" className="font-serif text-[1.02rem] leading-none tracking-[-0.01em] text-ink">
-              {site.wordmarkLead}
+            <Link href="/" className="font-serif text-[1.02rem] lowercase leading-none tracking-[-0.01em] text-ink">
+              {profile.name}
               <span className="text-ink-soft"> / {site.wordmarkRest}</span>
             </Link>
             <Link

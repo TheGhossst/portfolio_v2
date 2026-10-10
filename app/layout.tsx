@@ -5,6 +5,7 @@ import { InlineScript } from "@/components/inline-script";
 import { SiteCursor } from "@/components/site-cursor";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import profile from "@/content/profile.json";
 import { site } from "@/content/site";
 import { THEME_STORAGE_KEY } from "@/lib/theme";
 import "./globals.css";
@@ -31,7 +32,7 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: `${site.name} — ${site.title}`,
+    default: `${profile.name} — ${site.title}`,
     template: `%s — ${site.title}`,
   },
   description: site.description,

@@ -1,6 +1,7 @@
 import { CopyLink } from "@/components/copy-link";
 import { SearchTrigger } from "@/components/command-palette";
 import { Frame } from "@/components/frame";
+import profile from "@/content/profile.json";
 import { site } from "@/content/site";
 
 export function SiteFooter() {
@@ -10,7 +11,8 @@ export function SiteFooter() {
         <div>
           <p className="font-serif text-lg">{site.title}</p>
           <p className="mt-1 font-mono text-[0.72rem] text-ink-soft">
-            © {site.year} {site.name} · {site.identityNote}
+            © {site.year} {profile.name}
+            {profile.role ? ` · ${profile.role}` : ""}
           </p>
         </div>
         <div className="flex flex-col gap-2 font-mono text-[0.72rem] text-ink-soft md:items-end">

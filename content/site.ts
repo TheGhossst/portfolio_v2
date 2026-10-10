@@ -77,22 +77,6 @@ export const homeCopy = {
   recentTitle: "Recently, I’ve been…",
 } as const;
 
-export const aboutCopy = {
-  title: "A little about me",
-  paragraphs: [
-    "I’m an MTech student learning Go and backend systems. I’ve worked in blockchain, application development, full-stack software, and machine learning.",
-    "This site is a personal archive of that work: the systems, the applications, and what I’m learning now. It is not a résumé in disguise.",
-  ],
-  interestsLabel: "Interests",
-  interests: [
-    "Go and backend systems",
-    "Blockchain",
-    "App development",
-    "Full-stack software",
-    "Machine learning",
-  ],
-} as const;
-
 export const nowCopy = {
   title: "Now",
   lede: "What this archive is currently circling. Updated with the site, not as a status feed.",

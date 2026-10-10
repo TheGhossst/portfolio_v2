@@ -4,7 +4,8 @@ import { Meta, Spread } from "@/components/frame";
 import { ProjectList } from "@/components/project-list";
 import { TextLink } from "@/components/text-link";
 import { activity } from "@/content/activity";
-import { aboutCopy, homeCopy, site } from "@/content/site";
+import profile from "@/content/profile.json";
+import { homeCopy, site } from "@/content/site";
 import { featuredProjects, padCount } from "@/lib/archive";
 
 export default function Home() {
@@ -88,15 +89,15 @@ export default function Home() {
       >
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-16">
           <div>
-            <p className="max-w-[38rem] text-pretty">{aboutCopy.paragraphs[0]}</p>
+            <p className="max-w-[38rem] text-pretty">{profile.summary[0]}</p>
             <TextLink href="/about" className="mt-6 inline-block">
               More about this archive
             </TextLink>
           </div>
           <div>
-            <Meta>{aboutCopy.interestsLabel}</Meta>
+            <Meta>{profile.focusLabel}</Meta>
             <ol className="mt-4 flex flex-col gap-3">
-              {aboutCopy.interests.map((interest, index) => (
+              {profile.focus.filter((interest) => interest.trim()).map((interest, index) => (
                 <li key={interest} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-2 text-[0.98rem] leading-snug">
                   <span className="font-mono text-sm text-ink-soft">{padCount(index + 1)}</span>
                   <span>{interest}</span>
