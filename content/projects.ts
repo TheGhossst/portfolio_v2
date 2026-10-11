@@ -104,7 +104,7 @@ export const projects: Project[] = [
     categories: ["systems"],
     summary: "A consent record on a blockchain, so a patient’s permission can be granted, read, and withdrawn.",
     status: "completed",
-    featured: true,
+    featured: false,
     dateLabel: "10 Oct 2026",
     question: "Where should a patient’s permission live, when more than one system needs to see that it was given?",
     context:
@@ -152,7 +152,7 @@ export const projects: Project[] = [
     categories: ["apps"],
     summary: "A mobile app for following television shows and hearing when a new episode is out.",
     status: "completed",
-    featured: true,
+    featured: false,
     dateLabel: "16 Apr 2026",
     question: "How does a person keep a list of shows without opening each one to see whether something new has aired?",
     context:
@@ -262,7 +262,7 @@ export const projects: Project[] = [
     summary:
       "Exploring resource allocation, wireless communication, and optimization under network constraints.",
     status: "in-progress",
-    featured: false,
+    featured: true,
     dateLabel: "02 Oct 2026",
     question:
       "How should resources be allocated across a UAV network when the wireless links are part of the problem, not a detail beside it?",
@@ -306,7 +306,7 @@ export const projects: Project[] = [
     summary:
       "Investigating whether a joint-embedding predictor can keep the structure of a heartbeat when part of the ECG is withheld.",
     status: "in-progress",
-    featured: false,
+    featured: true,
     dateLabel: "28 Sep 2026",
     question:
       "What should a mask hide on an electrocardiogram, if the model is meant to keep the heartbeat rather than redraw the trace?",

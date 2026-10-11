@@ -354,6 +354,85 @@ html.theme-switching::view-transition-new(root) {
   }
 }
 
+.resume-sheet {
+  --resume-paper: #fffcf7;
+  --resume-ink: #292b26;
+  --resume-muted: #5e5b53;
+  --resume-rule: #c9c2b3;
+  --resume-accent: #77866b;
+  background: var(--resume-paper);
+  color: var(--resume-ink);
+  color-scheme: light;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.resume-sheet ::selection {
+  background: #e4eadc;
+  color: var(--resume-ink);
+}
+
+.resume-sensitive-value:has(.resume-secret) {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  vertical-align: baseline;
+  line-height: 1;
+  margin: -0.15em 0;
+  padding: 0.15em 0.2em 0.2em;
+}
+
+.resume-secret {
+  display: inline-block;
+  filter: blur(5px);
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@keyframes resume-deny {
+  0% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-3px);
+  }
+  30% {
+    transform: translateX(3px);
+  }
+  45% {
+    transform: translateX(-2px);
+  }
+  60% {
+    transform: translateX(2px);
+  }
+  75% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.resume-sheet .resume-shake {
+  animation: resume-deny 380ms ease-in-out;
+}
+
+.resume-sensitive-rule,
+.resume-print-omitted {
+  display: none;
+}
+
+@media (forced-colors: active) {
+  .resume-secret {
+    background: CanvasText;
+    color: transparent;
+    filter: none;
+    forced-color-adjust: none;
+    text-shadow: none;
+  }
+}
+
 @media print {
   html,
   html.dark {
@@ -395,7 +474,94 @@ html.theme-switching::view-transition-new(root) {
   }
 
   .study-block,
-  figure {
+  figure,
+  .resume-entry {
     break-inside: avoid;
   }
+
+  .resume-heading {
+    break-after: avoid;
+  }
+
+  .resume-page {
+    padding: 0 !important;
+  }
+
+  .resume-sheet header {
+    display: block !important;
+  }
+
+  .resume-sheet {
+    --resume-paper: #ffffff;
+    --resume-ink: #000000;
+    --resume-muted: #222222;
+    --resume-rule: #b5b5b5;
+    --resume-accent: #333333;
+    page: resume;
+    max-width: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 0 !important;
+    padding: 0 !important;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  .resume-panel {
+    display: block !important;
+    opacity: 1 !important;
+  }
+
+  .resume-panel-inner {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  html:not([data-resume-print="full"]) .resume-sensitive-value {
+    display: none !important;
+  }
+
+  html:not([data-resume-print="full"]) .resume-sensitive-rule {
+    display: inline-block !important;
+    width: 8.5rem;
+    max-width: 46%;
+    height: 0.72em;
+    border-bottom: 1px solid currentColor;
+    vertical-align: baseline;
+  }
+
+  html:not([data-resume-print="full"]) .resume-print-omitted {
+    display: block !important;
+  }
+
+  html[data-resume-print="full"] .resume-sensitive-value {
+    display: inline !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    color: inherit !important;
+  }
+
+  html[data-resume-print="full"] .resume-secret {
+    display: inline !important;
+    filter: none !important;
+    -webkit-user-select: text !important;
+    user-select: text !important;
+  }
+
+  html[data-resume-print="full"] .resume-sensitive-rule,
+  html[data-resume-print="full"] .resume-print-omitted {
+    display: none !important;
+  }
+
+  .resume-sheet p,
+  .resume-sheet li {
+    orphans: 3;
+    widows: 3;
+  }
+}
+
+@page resume {
+  margin: 0.7in;
 }

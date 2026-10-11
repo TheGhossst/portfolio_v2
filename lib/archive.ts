@@ -148,6 +148,11 @@ export function filterPalette(items: PaletteItem[], query: string) {
   );
 }
 
+const featuredOrder = ["uav-digital-twin", "e-voting", "efhub", "ecg-jepa"];
+
 export function featuredProjects() {
-  return projects.filter((project) => project.featured);
+  return featuredOrder.flatMap((slug) => {
+    const project = projects.find((item) => item.slug === slug && item.featured);
+    return project ? [project] : [];
+  });
 }

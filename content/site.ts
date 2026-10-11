@@ -56,7 +56,7 @@ export const contactLinks = [
   {
     label: "CV",
     href: "/cv",
-    hint: "Not published yet",
+    hint: "Study, work, and selected projects",
     external: false,
   },
 ] as const;
@@ -114,7 +114,7 @@ export const notesCopy = {
 export const cvCopy = {
   label: "CV",
   title: "Résumé",
-  lede: "A résumé file is not published yet. This page is here so the contact link has somewhere to go.",
+  lede: "Study, internships, selected work, and technical skills.",
 } as const;
 
 /** The only lines on the site that are allowed to have a little personality. */

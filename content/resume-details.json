@@ -1,0 +1,35 @@
+{
+  "note": "Fill the blanks in this file. Empty strings stay as placeholders on the résumé. Phone and location stay blurred. Copy an object to add another internship, achievement, paper, or certificate. The contact page email is still set in content/site.ts.",
+  "email": "placeholder@example.com",
+  "phone": "",
+  "location": "",
+  "education": {
+    "field": "",
+    "institution": "",
+    "dates": ""
+  },
+  "experience": {
+    "blockchain": { "organization": "", "dates": "" },
+    "application-development": { "organization": "", "dates": "" },
+    "full-stack": { "organization": "", "dates": "" },
+    "machine-learning": { "organization": "", "dates": "" }
+  },
+  "internships": [
+    {
+      "title": "",
+      "organization": "",
+      "dates": "",
+      "summary": "",
+      "points": []
+    }
+  ],
+  "achievements": [
+    { "title": "", "dates": "", "summary": "" }
+  ],
+  "publications": [
+    { "title": "", "dates": "", "summary": "" }
+  ],
+  "certifications": [
+    { "title": "", "dates": "", "summary": "" }
+  ]
+}
