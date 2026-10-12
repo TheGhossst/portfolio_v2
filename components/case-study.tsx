@@ -25,10 +25,13 @@ export function CaseStudy({ project }: { project: Project }) {
             <p className="font-mono text-[0.72rem] uppercase tracking-[0.14em] text-ink-soft">
               {project.categoryLabel}
             </p>
-            <h1 className="mt-3 max-w-[16ch] font-serif text-[2.25rem] font-medium leading-[1.12] tracking-[-0.02em] md:text-[2.75rem]">
+            <h1 className="mt-3 w-fit max-w-[16ch] cursor-pull font-serif text-[2.25rem] font-medium leading-[1.12] tracking-[-0.02em] md:text-[2.75rem]">
               {project.title}
             </h1>
-            <p className="mt-6 max-w-[36rem] text-pretty font-serif text-[1.35rem] italic leading-snug md:text-[1.5rem]">
+            <p
+              className="mt-6 w-fit max-w-[36rem] cursor-pull text-pretty font-serif text-[1.35rem] italic leading-snug md:text-[1.5rem]"
+              data-pull="5"
+            >
               {project.question}
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2">
@@ -77,7 +80,7 @@ export function CaseStudy({ project }: { project: Project }) {
 
             <StudyBlock label="Figure">
               <figure className="max-w-[28rem] font-mono">
-                <div className="border border-rule p-4">
+                <div className="cursor-field border border-rule p-4">
                   <ProjectDiagram slug={project.slug} />
                 </div>
                 <figcaption className="mt-3 text-[0.72rem] leading-relaxed text-ink-soft">

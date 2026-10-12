@@ -12,7 +12,7 @@ export function ContactBlock({ showHeading = true }: { showHeading?: boolean }) 
         {contactLinks.map((link) => {
           const external = link.href.startsWith("http");
           return (
-            <li key={link.label} className="border-b border-rule">
+            <li key={link.label} className="cursor-field border-b border-rule">
               <a
                 href={link.href}
                 className="flex items-baseline justify-between gap-6 py-3"

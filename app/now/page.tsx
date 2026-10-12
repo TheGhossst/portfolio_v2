@@ -23,7 +23,7 @@ export default function NowPage() {
           {nowCopy.items.map((item) => (
             <li
               key={item.label}
-              className="grid gap-3 border-b border-rule py-8 md:grid-cols-[9.5rem_minmax(0,1fr)] md:gap-12"
+              className="cursor-field grid gap-3 border-b border-rule py-8 md:grid-cols-[9.5rem_minmax(0,1fr)] md:gap-12"
             >
               <h2 className="font-mono text-[0.72rem] font-normal uppercase tracking-[0.14em] text-ink-soft">
                 {item.label}

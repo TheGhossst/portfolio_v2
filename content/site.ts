@@ -28,9 +28,8 @@ export const navLinks = [
 export const homepageSections = [
   { id: "intro", label: "Introduction", href: "/#intro" },
   { id: "work", label: "Selected work", href: "/#work" },
-  { id: "note", label: "A small thought", href: "/#note" },
+  { id: "focus", label: "Focus", href: "/#focus" },
   { id: "recent", label: "Recently", href: "/#recent" },
-  { id: "about", label: "About", href: "/#about" },
   { id: "contact", label: "Contact", href: "/#contact" },
 ] as const;
 
@@ -68,6 +67,7 @@ export const homeCopy = {
   introduction:
     "I’m an MTech student learning Go and backend systems. I’ve worked in blockchain, application development, full-stack software, and machine learning.",
   workLink: "Explore my work",
+  allWorkLink: "All work",
   aboutLink: "A little about me",
   noteLabel: "A small thought, left here.",
   noteDate: "12 Mar 2026",

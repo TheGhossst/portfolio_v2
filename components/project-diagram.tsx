@@ -18,7 +18,7 @@ export function ProjectDiagram({ slug, className = "h-auto w-full" }: { slug: st
 
 function Diagram({ className, children }: { className: string; children: ReactNode }) {
   return (
-    <svg viewBox="0 0 260 188" className={`font-mono ${className}`} aria-hidden="true">
+    <svg viewBox="0 0 260 188" className={`cursor-figure font-mono ${className}`} aria-hidden="true">
       {children}
     </svg>
   );

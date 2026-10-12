@@ -45,7 +45,7 @@ async function NoteContent({ params }: { params: PageProps<"/notes/[slug]">["par
           <p className="mt-3 font-mono text-[0.72rem] uppercase tracking-[0.14em] text-ink-soft">{note.category}</p>
         </div>
         <div className="min-w-0">
-          <h1 className="max-w-[18ch] font-serif text-[2.25rem] font-medium leading-[1.15] tracking-[-0.02em] md:text-[2.75rem]">
+          <h1 className="w-fit max-w-[18ch] cursor-pull font-serif text-[2.25rem] font-medium leading-[1.15] tracking-[-0.02em] md:text-[2.75rem]">
             {note.title}
           </h1>
           <div className="mt-8 max-w-[38rem] space-y-5">

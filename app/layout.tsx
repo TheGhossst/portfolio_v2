@@ -30,6 +30,9 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
 });
 
+// The in-editor browser stamps data-cursor-ref onto the server HTML before hydration.
+const stripCursorRefs = `(function(){function strip(node){if(!node||node.nodeType!==1)return;if(node.hasAttribute("data-cursor-ref"))node.removeAttribute("data-cursor-ref");var list=node.querySelectorAll("[data-cursor-ref]");for(var i=0;i<list.length;i++)list[i].removeAttribute("data-cursor-ref")}var root=document.documentElement;strip(root);new MutationObserver(function(records){for(var i=0;i<records.length;i++){var record=records[i];if(record.type==="attributes"){if(record.target.hasAttribute("data-cursor-ref"))record.target.removeAttribute("data-cursor-ref");continue}var nodes=record.addedNodes;for(var j=0;j<nodes.length;j++)strip(nodes[j])}}).observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:["data-cursor-ref"]})})();`;
+
 export const metadata: Metadata = {
   title: {
     default: `${profile.name} — ${site.title}`,
@@ -47,6 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-paper font-sans text-ink">
+        {process.env.NODE_ENV === "development" ? <InlineScript html={stripCursorRefs} /> : null}
         <InlineScript
           html={`(function(){try{if(localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)})==="dark")document.documentElement.classList.add("dark")}catch(e){}})()`}
         />

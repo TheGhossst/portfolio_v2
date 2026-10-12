@@ -21,7 +21,7 @@ export function ProjectList({
     return (
       <ol className="border-t border-rule">
         {projects.map((project) => (
-          <li key={project.slug} className="border-b border-rule">
+          <li key={project.slug} className="cursor-field border-b border-rule">
             <Link
               href={projectHref(project.slug)}
               className="group grid grid-cols-[2.5rem_minmax(0,1fr)] items-baseline gap-x-4 gap-y-1 py-3 md:grid-cols-[3rem_minmax(0,1fr)_12rem_8.5rem]"
@@ -46,7 +46,7 @@ export function ProjectList({
   return (
     <ol className="border-t border-rule">
       {projects.map((project) => (
-        <li key={project.slug} className="border-b border-rule py-8 md:py-10">
+        <li key={project.slug} className="cursor-field border-b border-rule py-8 md:py-10">
           <article className="grid gap-6 md:grid-cols-[3.25rem_minmax(0,1fr)_14rem] md:gap-8">
             <div className="flex items-baseline justify-between md:block">
               <p className="font-serif text-2xl leading-none text-sage">{project.number}</p>
@@ -75,7 +75,7 @@ export function ProjectList({
               </TextLink>
             </div>
             <figure className="font-mono md:pt-1">
-              <div className="border border-rule px-3 py-3">
+              <div className="cursor-field border border-rule px-3 py-3">
                 <ProjectDiagram slug={project.slug} />
               </div>
               <figcaption className="mt-2 text-[0.7rem] leading-relaxed text-ink-soft">
@@ -89,6 +89,6 @@ export function ProjectList({
   );
 }
 
-function projectHref(slug: string) {
+export function projectHref(slug: string) {
   return slug === "tools-worth-building" ? `/work/${slug}#repositories` : `/work/${slug}`;
 }

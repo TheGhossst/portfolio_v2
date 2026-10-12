@@ -7,7 +7,7 @@ export function ActivityList({ items }: { items: Activity[] }) {
       {items.map((item) => (
         <li
           key={item.date + item.text}
-          className="grid gap-1 border-b border-rule py-4 sm:grid-cols-[8.5rem_minmax(0,1fr)] sm:items-baseline sm:gap-8 sm:py-5"
+          className="cursor-field grid gap-1 border-b border-rule py-4 sm:grid-cols-[8.5rem_minmax(0,1fr)] sm:items-baseline sm:gap-8 sm:py-5"
         >
           <time dateTime={item.date} className="font-mono text-sm text-ink-soft">
             {item.dateLabel}

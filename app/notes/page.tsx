@@ -24,7 +24,7 @@ export default function NotesPage() {
             return (
               <li
                 key={note.slug}
-                className="grid gap-3 border-b border-rule py-8 md:grid-cols-[9.5rem_minmax(0,1fr)] md:gap-12 md:py-10"
+                className="cursor-field grid gap-3 border-b border-rule py-8 md:grid-cols-[9.5rem_minmax(0,1fr)] md:gap-12 md:py-10"
               >
                 <time dateTime={note.date} className="font-mono text-sm text-ink-soft">
                   {note.dateLabel}
